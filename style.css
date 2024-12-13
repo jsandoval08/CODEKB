@@ -1,0 +1,242 @@
+:root {
+    --c64-brown: #815738;
+    --c64-beige: #d4c5a9;
+    --key-text: #000000;
+    --key-function: #901010;
+    --key-symbol: #2040a0;
+    --transition-speed: 0.3s;
+  }
+  
+  body {
+    margin: 0;
+    padding: 20px;
+    background-color: #404040;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    perspective: 1500px;
+    overflow-x: hidden;
+  }
+  
+  @media (max-width: 1200px) {
+    .keyboard {
+      transform: scale(0.9) rotateX(10deg) rotateY(0deg);
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .keyboard {
+      transform: scale(0.8) rotateX(10deg) rotateY(0deg);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .keyboard {
+      transform: scale(0.7) rotateX(10deg) rotateY(0deg);
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .keyboard {
+      transform: scale(0.6) rotateX(10deg) rotateY(0deg);
+    }
+  }
+  
+  .keyboard {
+    background-color: var(blue);
+    border-radius: 10px;
+    padding: 25px 30px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8),
+      inset 0 2px 15px rgba(129, 148, 255, 0.3),
+      inset 0 -8px 20px rgba(0, 0, 0, 0.4);
+    display: grid;
+    grid-template-columns: repeat(17, 42px);
+    grid-gap: 6px;
+    position: relative;
+    border: 3px solid #6b3410;
+    transform: rotateX(10deg) rotateY(0deg);
+    transform-style: preserve-3d;
+    width: fit-content;
+    animation: subtle-float 10s ease-in-out infinite; /* Ajout de l'animation ici */
+  }
+  
+  .keyboard-title {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--c64-beige);
+    font-family: "Arial", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+  }
+  
+  .keyboard::after {
+    content: "CODED BY JAS";
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    color: var(--c64-beige);
+    font-family: "Robotic", sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
+  
+  .keyboard::before {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background-color: #d8cdc5;
+    transform: rotateX(-60deg);
+    transform-origin: top;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  }
+  
+  .key {
+    background: linear-gradient(165deg, #f0e6d6, #d4c5a9);
+    border: 2px solid #a89883;
+    border-radius: 4px;
+    height: 38px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--key-text);
+    cursor: pointer;
+    position: relative;
+    transition: all var(--transition-speed);
+    font-size: 11px;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3),
+      inset 0 2px 3px rgba(255, 255, 255, 0.7),
+      inset 0 -3px 4px rgba(0, 0, 0, 0.3);
+    transform-style: preserve-3d;
+    transform: translateZ(4px);
+  }
+  
+  .key::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: #967d63;
+    transform: rotateX(-90deg);
+    transform-origin: top;
+    border-radius: 0 0 3px 3px;
+  }
+  
+  .key:active,
+  .key.pressed {
+    transform: translateZ(0);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3),
+      inset 0 1px 2px rgba(255, 255, 255, 0.4),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(165deg, #d4c5a9, #c4b599);
+  }
+  
+  .key .primary {
+    font-weight: bold;
+    font-size: 13px;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+  }
+  
+  .key .secondary {
+    font-size: 9px;
+    color: var(--key-symbol);
+    margin-top: 2px;
+  }
+  
+  .key.function {
+    color: var(--key-function);
+    background: linear-gradient(165deg, #e6d7bb, #d4c5a9);
+    font-weight: bold;
+  }
+  
+  .key.wide-2 {
+    grid-column: span 2;
+  }
+  
+  .key.space {
+    grid-column: span 11;
+    text-align: center;
+    justify-content: center;
+    transform: translateX(95px);
+  }
+  
+  .commodore {
+    grid-column: span 1;
+  }
+  
+  .key.restore {
+    background: linear-gradient(165deg, #a01818, #801010);
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.4),
+      inset 0 2px 3px rgba(255, 255, 255, 0.3),
+      inset 0 -3px 4px rgba(0, 0, 0, 0.4);
+  }
+  
+  .side-functions {
+    grid-column: 17;
+    grid-row: 1 / span 4;
+    display: grid;
+    grid-gap: 6px;
+  }
+  
+  .cursor-cross {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 42px);
+    grid-template-rows: repeat(2, 38px);
+    gap: 6px;
+    width: fit-content;
+  }
+  
+  .cursor-cross .key:nth-child(1) {
+    grid-column: 2;
+    grid-row: 1;
+    transform: translateY(-4px);
+  }
+  
+  .cursor-cross .key:nth-child(2) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  
+  .cursor-cross .key:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  
+  .cursor-cross .key:nth-child(4) {
+    grid-column: 3;
+    grid-row: 2;
+  }
+  
+  @keyframes subtle-float {
+    0%,
+    100% {
+      transform: rotateX(10deg) rotateY(0deg);
+    }
+    25% {
+      transform: rotateX(12deg) rotateY(1deg);
+    }
+    75% {
+      transform: rotateX(8deg) rotateY(-1deg);
+    }
+  }
+  
